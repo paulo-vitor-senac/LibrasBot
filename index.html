@@ -219,62 +219,63 @@
     <b>Marca Formativa SENAC: Protagonismo Juvenil, Social e Econômico</b>
   </footer>
 
-   <div vw class="enabled">
+  <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
+
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 
-    const btnVideoaulas = document.getElementById("btn-videoaulas");
-    const btnVideoaulas2 = document.getElementById("btn-videoaulas-2");
-    const btnVoltar = document.getElementById("voltar-home");
-    const secaoHome = document.getElementById("home");
-    const secaoVideoaulas = document.getElementById("videoaulas");
+  const btnVideoaulas = document.getElementById("btn-videoaulas");
+  const btnVideoaulas2 = document.getElementById("btn-videoaulas-2");
+  const btnVoltar = document.getElementById("voltar-home");
+  const secaoHome = document.getElementById("home");
+  const secaoVideoaulas = document.getElementById("videoaulas");
 
-    function mostrarVideoaulas() {
-      secaoHome.style.display = "none";
-      secaoVideoaulas.style.display = "block";
-      window.scrollTo(0, 0);
-    }
+  function mostrarVideoaulas() {
+  secaoHome.style.display = "none";
+  secaoVideoaulas.style.display = "block";
+  window.scrollTo(0, 0);
+  }
 
-    btnVideoaulas.addEventListener("click", function (e) {
-      e.preventDefault();
-      mostrarVideoaulas();
-    });
+  btnVideoaulas.addEventListener("click", function (e) {
+  e.preventDefault();
+  mostrarVideoaulas();
+  });
 
-    btnVideoaulas2.addEventListener("click", function (e) {
-      e.preventDefault();
-      mostrarVideoaulas();
-    });
+  btnVideoaulas2.addEventListener("click", function (e) {
+  e.preventDefault();
+  mostrarVideoaulas();
+  });
 
-    btnVoltar.addEventListener("click", function () {
-      secaoVideoaulas.style.display = "none";
-      secaoHome.style.display = "block";
-      window.scrollTo(0, 0);
-    });
+  btnVoltar.addEventListener("click", function () {
+  secaoVideoaulas.style.display = "none";
+  secaoHome.style.display = "block";
+  window.scrollTo(0, 0);
+  });
 
-    const btnVerMais = document.getElementById("btn-ver-mais");
-    const textoCompleto = document.getElementById("texto-completo");
+  const btnVerMais = document.getElementById("btn-ver-mais");
+  const textoCompleto = document.getElementById("texto-completo");
 
-    btnVerMais.addEventListener("click", () => {
-      const aberto = textoCompleto.classList.contains("aberto");
-      textoCompleto.classList.toggle("aberto");
-      btnVerMais.textContent = aberto ? "Ver mais" : "Ver menos";
-    });
+  btnVerMais.addEventListener("click", () => {
+  const aberto = textoCompleto.classList.contains("aberto");
+  textoCompleto.classList.toggle("aberto");
+  btnVerMais.textContent = aberto ? "Ver mais" : "Ver menos";
+  });
 
-    function pesquisarPalavra() {
-      const valor = document.getElementById("campo-pesquisa").value.trim().toLowerCase();
-      if (valor) {
-        alert(`Você pesquisou: ${valor}`);
-        // Aqui futuramente pode buscar vídeo ou imagem relacionada.
-      } else {
-        alert("Por favor, digite uma palavra para pesquisar.");
-      }
-    }
+  function pesquisarPalavra() {
+  const valor = document.getElementById("campo-pesquisa").value.trim().toLowerCase();
+  if (valor) {
+  alert(`Você pesquisou: ${valor}`);
+  // Aqui futuramente pode buscar vídeo ou imagem relacionada.
+  } else {
+  alert("Por favor, digite uma palavra para pesquisar.");
+  }
+  }
   </script>
 </body>
 
