@@ -133,7 +133,6 @@
 
     video {
       width: 200px;
-
     }
   </style>
 </head>
@@ -142,10 +141,9 @@
   <header>
     <h1>LibrasBot</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="#alfabeto">Alfabeto</a>
+      <a href="#">Home</a>
+      <a href="#" id="btn-alfabeto">Alfabeto</a>
       <a id="btn-videoaulas" href="#">Videoaulas</a>
-
     </nav>
   </header>
 
@@ -158,15 +156,19 @@
         <button onclick="pesquisarPalavra()">Buscar</button>
       </div>
       <div class="button-grid">
-        <a href="#alfabeto">🔤 Alfabeto</a>
+        <a href="#" id="btn-alfabeto-2" onclick="">🔤 Alfabeto</a>
         <a id="btn-videoaulas-2" href="#">🎥 Videoaulas</a>
         <a href="#sobre">ℹ️ Sobre</a>
       </div>
-    </section>
 
-    <section id="alfabeto">
-      <h2>🔤 Alfabeto em Libras</h2>
-      <div class="card">Grade de A a Z com vídeos demonstrativos.</div>
+      <!-- Imagem do Alfabeto aparece aqui -->
+      <div id="imagem-alfabeto" style="display: none; margin-top: 2rem;">
+        <div class="card"><h3>📷 Alfabeto em Libras</h3>
+        <center><img src="img/ALFABETO-LIBRAS.png" style="width: 100%; max-width: 400px;" /></center>
+        <br><br>
+        <button class="btn-voltar" onclick="fecharAlfabeto()">Fechar</button>
+      </div>
+      </div>
     </section>
 
     <section id="videoaulas">
@@ -176,7 +178,7 @@
         <h3>Video Aula 1</h3>
         <center>
           <video width="300px" controls>
-            <source src="img/MicrosoftTeams-video (1).mp4" type="video/mp4" />
+            <source src="img/MicrosoftTeams-video (2).mp4" type="video/mp4" />
             Seu navegador não suporta o elemento de vídeo.
           </video>
         </center>
@@ -189,20 +191,16 @@
       <div id="texto-sobre">
         <p>
           O <strong>LibrasBot</strong> é uma iniciativa educativa e acessível criada com o propósito de facilitar o
-          aprendizado da <strong>Língua Brasileira de Sinais (Libras)</strong>. Desenvolvido com foco na
-          <strong>inclusão digital</strong>, ele busca aproximar surdos, ouvintes e aprendizes por meio de uma
-          experiência interativa e amigável.
+          aprendizado da <strong>Língua Brasileira de Sinais (Libras)</strong>.
         </p>
         <div id="texto-completo" class="colapsavel">
           <p>
             Acreditamos que a comunicação é um direito de todos. Por isso, o LibrasBot oferece recursos visuais como o
-            alfabeto em Libras, expressões do cotidiano, e videoaulas didáticas, permitindo que qualquer pessoa possa
-            dar os primeiros passos na língua de sinais.
+            alfabeto em Libras, expressões do cotidiano, e videoaulas didáticas.
           </p>
           <p>
-            Este projeto foi desenvolvido por <strong>Paulo Vitor</strong> e <strong>Luís Felipe</strong>, no contexto
-            da <strong>Marca Formativa SENAC</strong>, e é um exemplo de como a tecnologia pode ser usada para promover
-            o protagonismo juvenil, a inclusão social e a valorização da diversidade.
+            Projeto desenvolvido por <strong>Paulo Vitor</strong> e <strong>Luís Felipe</strong> para a
+            <strong>Marca Formativa SENAC</strong>.
           </p>
           <p>
             <em>Libras é mais do que uma linguagem. É uma ponte para um mundo mais empático e acessível.</em>
@@ -230,53 +228,72 @@
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 
+    const btnVideoaulas = document.getElementById("btn-videoaulas");
+    const btnVideoaulas2 = document.getElementById("btn-videoaulas-2");
+    const btnVoltar = document.getElementById("voltar-home");
+    const secaoHome = document.getElementById("home");
+    const secaoVideoaulas = document.getElementById("videoaulas");
 
-  const btnVideoaulas = document.getElementById("btn-videoaulas");
-  const btnVideoaulas2 = document.getElementById("btn-videoaulas-2");
-  const btnVoltar = document.getElementById("voltar-home");
-  const secaoHome = document.getElementById("home");
-  const secaoVideoaulas = document.getElementById("videoaulas");
+    btnVideoaulas.addEventListener("click", function (e) {
+      e.preventDefault();
+      secaoHome.style.display = "none";
+      secaoVideoaulas.style.display = "block";
+      window.scrollTo(0, 0);
+    });
 
-  function mostrarVideoaulas() {
-  secaoHome.style.display = "none";
-  secaoVideoaulas.style.display = "block";
-  window.scrollTo(0, 0);
-  }
+    btnVideoaulas2.addEventListener("click", function (e) {
+      e.preventDefault();
+      secaoHome.style.display = "none";
+      secaoVideoaulas.style.display = "block";
+      window.scrollTo(0, 0);
+    });
 
-  btnVideoaulas.addEventListener("click", function (e) {
-  e.preventDefault();
-  mostrarVideoaulas();
-  });
+    btnVoltar.addEventListener("click", function () {
+      secaoVideoaulas.style.display = "none";
+      secaoHome.style.display = "block";
+      window.scrollTo(0, 0);
+    });
 
-  btnVideoaulas2.addEventListener("click", function (e) {
-  e.preventDefault();
-  mostrarVideoaulas();
-  });
+    const btnAlfabeto = document.getElementById("btn-alfabeto");
+    const btnAlfabeto2 = document.getElementById("btn-alfabeto-2");
+    const imagemAlfabeto = document.getElementById("imagem-alfabeto");
 
-  btnVoltar.addEventListener("click", function () {
-  secaoVideoaulas.style.display = "none";
-  secaoHome.style.display = "block";
-  window.scrollTo(0, 0);
-  });
+    function mostrarAlfabeto() {
+      imagemAlfabeto.style.display = "block";
+      window.scrollTo(0, imagemAlfabeto.offsetTop);
+    }
 
-  const btnVerMais = document.getElementById("btn-ver-mais");
-  const textoCompleto = document.getElementById("texto-completo");
+    function fecharAlfabeto() {
+      imagemAlfabeto.style.display = "none";
+    }
 
-  btnVerMais.addEventListener("click", () => {
-  const aberto = textoCompleto.classList.contains("aberto");
-  textoCompleto.classList.toggle("aberto");
-  btnVerMais.textContent = aberto ? "Ver mais" : "Ver menos";
-  });
+    btnAlfabeto.addEventListener("click", function (e) {
+      e.preventDefault();
+      mostrarAlfabeto();
+    });
 
-  function pesquisarPalavra() {
-  const valor = document.getElementById("campo-pesquisa").value.trim().toLowerCase();
-  if (valor) {
-  alert(`Você pesquisou: ${valor}`);
-  // Aqui futuramente pode buscar vídeo ou imagem relacionada.
-  } else {
-  alert("Por favor, digite uma palavra para pesquisar.");
-  }
-  }
+    btnAlfabeto2.addEventListener("click", function (e) {
+      e.preventDefault();
+      mostrarAlfabeto();
+    });
+
+    const btnVerMais = document.getElementById("btn-ver-mais");
+    const textoCompleto = document.getElementById("texto-completo");
+
+    btnVerMais.addEventListener("click", () => {
+      const aberto = textoCompleto.classList.contains("aberto");
+      textoCompleto.classList.toggle("aberto");
+      btnVerMais.textContent = aberto ? "Ver mais" : "Ver menos";
+    });
+
+    function pesquisarPalavra() {
+      const valor = document.getElementById("campo-pesquisa").value.trim().toLowerCase();
+      if (valor) {
+        alert(`Você pesquisou: ${valor}`);
+      } else {
+        alert("Por favor, digite uma palavra para pesquisar.");
+      }
+    }
   </script>
 </body>
 
